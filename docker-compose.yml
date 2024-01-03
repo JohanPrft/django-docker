@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  django:
+    container_name: django
+    depends_on : 
+      - pgdb
+    build:
+      context: ./transcendance
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./transcendance:/usr/src/app/
+    ports:
+      - 8000:8000
+    environment:
+      - ENV_VAR=1
+
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    build:
+      context: ./postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+   

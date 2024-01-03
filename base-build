@@ -1,0 +1,10 @@
+# create and activate a virtual env 
+python3 -m venv venv
+source venv/bin/activate
+
+pip install django
+django-admin startproject transcendance
+
+# update requirement when new pip install
+cd transcendance
+pip freeze > requirement.txt
