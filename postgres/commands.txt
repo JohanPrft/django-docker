@@ -1,0 +1,8 @@
+# connect to the docker
+docker exec -it pgdb /bin/bash
+
+# connect to postgres as a user
+psql -U <user>
+
+# connect to a db
+\c <db>
