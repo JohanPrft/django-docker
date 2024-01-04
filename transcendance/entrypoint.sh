@@ -2,11 +2,12 @@
 # exits if error happens
 set -e
 
-
-until psql -h postgres -U postgres -d postgres -c "select 1" > /dev/null 2>&1; do
-  echo "Waiting for postgres server..."
+while ! nc -z pgdb $POSTGRES_PORT
+do
+  echo 'Waiting for postgres...'
   sleep 1
-done
+done;
+
 
 echo "Apply db migration"
 python manage.py migrate

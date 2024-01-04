@@ -13,16 +13,11 @@ services:
       - ./transcendance:/usr/src/app/
     ports:
       - 8000:8000
-    environment:
-      - ENV_VAR=1
+    env_file: ./.env
 
   pgdb:
     image: postgres
     container_name: pgdb
     build:
       context: ./postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-   
+    env_file: ./.env

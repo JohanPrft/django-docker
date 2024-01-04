@@ -1,4 +1,4 @@
-#!/home/jprofit/Documents/transcendance/venv/bin/python3
+#!/home/johan/Documents/django-docker/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
