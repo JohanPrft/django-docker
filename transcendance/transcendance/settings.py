@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
+# Application definition, add when creating a new app (list in apps.py)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # specify app config
+    'pong.apps.PongConfig',
 ]
 
 MIDDLEWARE = [

@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+  path('admin/', admin.site.urls),
+  path('pong/', include('pong.urls')),
+  # Add URL maps to redirect the base URL to our application
+  path('', RedirectView.as_view(url='pong/')),
+  # Use static() to add URL mapping to serve static files during development (only)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
