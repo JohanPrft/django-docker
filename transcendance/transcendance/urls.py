@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
   path('admin/', admin.site.urls),
+  # make sure all links starting by pong/ are treated bt the pong app
   path('pong/', include('pong.urls')),
   # Add URL maps to redirect the base URL to our application
   path('', RedirectView.as_view(url='pong/')),

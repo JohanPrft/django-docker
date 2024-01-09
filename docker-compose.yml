@@ -4,13 +4,13 @@ services:
 
   django:
     container_name: django
-    depends_on : 
+    depends_on :
       - pgdb
     build:
       context: ./transcendance
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./transcendance:/usr/src/app/
+      - django_data:/usr/src/app/
     ports:
       - 8000:8000
     env_file: ./.env
@@ -20,4 +20,20 @@ services:
     container_name: pgdb
     build:
       context: ./postgres
+    volumes:
+      - pgdb_data:/var/lib/postgresql/data
     env_file: ./.env
+
+volumes:
+  django_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ./transcendance
+  pgdb_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: ./postgres/data
